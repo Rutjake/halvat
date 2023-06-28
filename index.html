@@ -2,14 +2,34 @@
 <html>
 <head>  
 <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="style.css">
 <title>Halvat Tunnit</title>
 </head>
 
 <body>
     <h1>Halvat Tunnit</h1>
-    <p>(i) Sivun tarkoitus on selkeyttää Shelly-releen skriptin toimitaa.</p>
+    <p>(i) Sivun tarkoitus on selkeyttää Shelly-releen skriptin toimintaa. (i)</p>
+    <p>Sivu hakee pörssisähkön halvimmat tunnit syötetyillä tiedoilla.</p>
+    <p><strong>Esim:</strong><br>22.00 = 22 <br>8h = 8</p>
+    <input id="alku" type="number" placeholder="Alkaen tunnista">
+    <input id="pituus" type="number" placeholder="Kuinka monelta tunnilta?" onhange="">
+    <br>
+    <input id="tuntia" type="number" placeholder="Kuinka monta tuntia?" onhange="">
+    <br>
     <button onclick="fetchData()">Hae</button>
     <h3 id ="tunnit"></h3>
+    <p id="alv"></p>
+    <table>
+        <tr id="otsikko">
+
+        </tr>
+        <tr id="halvimmat">
+
+        </tr>
+    </table>
+    <p>Jos haluat hakea kello 22.00 alkaen 8 tunnin ajalta 3 halvinta tuntia syötä:</p>
+    <p>"Alkaen tunnista": 22, "Kuinka monelta tunnilta": 8, ja "Kuinka monta tuntia": 3</p>
 
     <!-- JavaScript file: -->
     <script src="get_data.js"></script>
