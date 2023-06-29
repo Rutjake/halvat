@@ -90,81 +90,100 @@ function find_cheapest(result) {
             console.log(hour, hourly_prices[hr]["time"], hourly_prices[hr]["price"], hourly_prices[hr]["period_price"]);
             document.getElementById("tunnit").innerHTML = "Halvimmat tunnit ensi yönä:";
             //console.log(all_hours);
-            document.getElementById("alv").innerHTML = "Alv 0%";
+            document.getElementById("alv").innerHTML = "Alv 24%";
 
         }
        web_printing(all_hours);
 
         console.log("Cheapest hour", cheapest_period["time"], cheapest_period["period_price"], "average",
-            cheapest_period["period_price"] / needed_length)
+            cheapest_period["period_price"] / needed_length);
     }
 }
 
 function web_printing(all_hours) {
+   
+    // Clock
+    const today = new Date();
+    let h = today.getHours();
+
+    // User Fetch Before Klo.15.00 
+    if (h < 15) {
+        document.getElementById("tunnit").innerHTML = "<strong>HUOM! </strong> Sähköpörssin tiedot päivittyy vasta noin klo. 15.00.";
+        document.getElementById("tunnit").style.color = "red";
+        document.getElementById("info").innerHTML = "Aikainen lintu madon nappaa... Tarkista listasta päivämäärä. Jos listassa on väärä päivämäärä, palaa klo.15.00 jälkeen.";
+    }   
 
     // Clean Table
-
     document.getElementById("otsikko").innerHTML = "";
     document.getElementById("halvimmat").innerHTML = "";
 
-     // Get Input Value ! Tässä joku Bugi !
-     needed_length = document.getElementById("tuntia").value;
-     period_start = document.getElementById("alku").value;
-     period_length = document.getElementById("pituus").value;
+    // Get Input Value ! Tässä joku Bugi !
+    //period_start = document.getElementById("alku").value;
+    //period_length = document.getElementById("pituus").value;
+    needed_length = document.getElementById("tuntia").value;
 
     // Lista jossa vain halvimmat tunnit valitulta ajanjaksolta
     let slicer = all_hours.length - needed_length;
     const new_hours = all_hours.slice(slicer);
     const output = new Array(new_hours.length);
 
-    // Titles
-    const new_th1 = document.createElement('th');
-    const new_content1 = document.createTextNode("Päivä: ");
-    new_th1.appendChild(new_content1);
-    otsikko.appendChild(new_th1);
-
-    const new_th2 = document.createElement('th');
-    const new_content2 = document.createTextNode("Aika: ");
-    new_th2.appendChild(new_content2);
-    otsikko.appendChild(new_th2);
-
-    const new_th3 = document.createElement('th');
-    const new_content3 = document.createTextNode("Hinta: ");
-    new_th3.appendChild(new_content3);
-    otsikko.appendChild(new_th3);
-
-    // Prices
-
+    let title_condition = 0;
+   
+    // Titles And Prices To Table
+  
     for (let i = 0; i < new_hours.length; i++){
+        
+        // Titles
+        if (title_condition === 0){
+        let tr0 = document.createElement('tr');
+        halvimmat.appendChild(tr0);
+
+        let th1 = document.createElement('th');
+        th1.textContent = "Päivä:";
+        tr0.appendChild(th1);
+
+        let th2 = document.createElement('th');
+        th2.textContent = "Aika:";
+        tr0.appendChild(th2);
+        
+        let th3 = document.createElement('th');
+        th3.textContent = "Hinta:";
+        tr0.appendChild(th3);
+        
+        title_condition = 1;
+        }
+
+        // Prices
+        let tr1 = document.createElement('tr');
+        halvimmat.appendChild(tr1);
 
         output[i] = new_hours[i].slice(0, -20);
-        let th1 = document.createElement('td');
-        th1.textContent = output[i];
-        halvimmat.appendChild(th1);
+        let td1 = document.createElement('td');
+        td1.textContent = output[i];
+        tr1.appendChild(td1);
 
-        output[i] = new_hours[i].slice(10, -14);
-        let th2 = document.createElement('td');
-        th2.textContent = output[i];
-        halvimmat.appendChild(th2);
+        output[i] = new_hours[i].slice(10, -15);
+        let td2 = document.createElement('td');
+        td2.textContent = output[i];
+        tr1.appendChild(td2);
 
         output[i] = new_hours[i].slice(25);
-        let th3 = document.createElement('td');
+        let td3 = document.createElement('td');
         price = output[i];
         hundreds = parseFloat(price);
-        snt = hundreds / 10;
+        snt = (hundreds / 10) * 1.24;
         //console.log(snt.toFixed(2));
-        th3.textContent = snt.toFixed(2) + "c /kWh";
-        halvimmat.appendChild(th3);
-
+        td3.textContent = snt.toFixed(2) + "c /kWh";
+        tr1.appendChild(td3);
+        
     }
 
 }
 async function fetchData() {
-     
-    let url = "https://elspotcontrol.netlify.app/spotprices-v01-FI.json";
-    const response = await fetch(url);
-    const result = await response.json();
 
-    find_cheapest(result);
+        let url = "https://elspotcontrol.netlify.app/spotprices-v01-FI.json";
+        const response = await fetch(url);
+        const result = await response.json();
+        find_cheapest(result);  
     
 }

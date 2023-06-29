@@ -9,8 +9,9 @@
 
 <body>
     <h1>Halvat Tunnit</h1>
-    <p>(i) Sivun tarkoitus on selkeyttää Shelly-releen skriptin toimintaa. (i)</p>
+    <p>(i) Sivun tarkoitus on selkeyttää Shelly-releen skriptin toimintaa.</p>
     <p>Sivu hakee pörssisähkön halvimmat tunnit syötetyillä tiedoilla.</p>
+    <p>Jos haluat hakea kello 22.00 alkaen 8 tunnin ajalta 3 halvinta tuntia syötä: <br>"Alkaen tunnista": 22 "Kuinka monelta tunnilta": 8 ja "Kuinka monta tuntia": 3</p>
     <p><strong>Esim:</strong><br>22.00 = 22 <br>8h = 8</p>
     <input id="alku" type="number" placeholder="Alkaen tunnista">
     <input id="pituus" type="number" placeholder="Kuinka monelta tunnilta?" onhange="">
@@ -19,6 +20,7 @@
     <br>
     <button onclick="fetchData()">Hae</button>
     <h3 id ="tunnit"></h3>
+    <p id="info"></p>
     <p id="alv"></p>
     <table>
         <tr id="otsikko">
@@ -28,9 +30,21 @@
 
         </tr>
     </table>
-    <p>Jos haluat hakea kello 22.00 alkaen 8 tunnin ajalta 3 halvinta tuntia syötä:</p>
-    <p>"Alkaen tunnista": 22, "Kuinka monelta tunnilta": 8, ja "Kuinka monta tuntia": 3</p>
-
+    <p id="halvin"></p>
+    <h3>Loki:</h3>
+    <ul>
+        <li>
+            Jos haetaan esim. kolmelta tunnilta scripti laskee hinnan keskiarvon.
+        </li>
+        <li>
+            Jos tietoja haetaan ennen klo.15.00, tulostaa sivu yleensä edellisen päivän pörssitiedot, koska sähköpörssi päivittyy vasta noin klo.15.00.
+        </li>
+        <li>
+            Sivusto kaatuu jos hakee tietoja useamman kerran peräkkäin päivittämättä sivua.
+        </li>
+    </ul>
+    
+    
     <!-- JavaScript file: -->
     <script src="get_data.js"></script>
 
