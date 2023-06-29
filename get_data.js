@@ -101,7 +101,7 @@ function find_cheapest(result) {
 }
 
 function web_printing(all_hours) {
-   
+    
     // Clock
     const today = new Date();
     let h = today.getHours();
@@ -118,8 +118,8 @@ function web_printing(all_hours) {
     document.getElementById("halvimmat").innerHTML = "";
 
     // Get Input Value ! Tässä joku Bugi !
-    //period_start = document.getElementById("alku").value;
-    //period_length = document.getElementById("pituus").value;
+    period_start = document.getElementById("alku").value;
+    period_length = document.getElementById("pituus").value;
     needed_length = document.getElementById("tuntia").value;
 
     // Lista jossa vain halvimmat tunnit valitulta ajanjaksolta

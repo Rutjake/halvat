@@ -11,13 +11,46 @@
     <h1>Halvat Tunnit</h1>
     <p>(i) Sivun tarkoitus on selkeyttää Shelly-releen skriptin toimintaa.</p>
     <p>Sivu hakee pörssisähkön halvimmat tunnit syötetyillä tiedoilla.</p>
-    <p>Jos haluat hakea kello 22.00 alkaen 8 tunnin ajalta 3 halvinta tuntia syötä: <br>"Alkaen tunnista": 22 "Kuinka monelta tunnilta": 8 ja "Kuinka monta tuntia": 3</p>
-    <p><strong>Esim:</strong><br>22.00 = 22 <br>8h = 8</p>
+    <p>Jos haluat hakea kello 22.00 alkaen 8 tunnin ajalta 3 halvinta tuntia syötä: <br>"Alkaen tunnista": 22:00 "Kuinka monelta tunnilta": 8h ja "Kuinka monta tuntia": 3h</p>
+
+    <label for="alkaen">Alkaen tunnista:</label><br>
+    <select name="alkaen" id="alku">
+        <option value="20">20:00</option>
+        <option value="21">21:00</option>
+        <option value="22">22:00</option>
+        <option value="23">23:00</option>
+        <option value="24">00:00</option>
+
+    </select><br>
+    <label for="monta">Kuinka monelta tunnilta:</label><br>
+    <select name="monta" id="pituus">
+        <option value="1">1h</option>
+        <option value="2">2h</option>
+        <option value="3">3h</option>
+        <option value="4">4h</option>
+        <option value="5">5h</option>
+        <option value="6">6h</option>
+        <option value="7">7h</option>
+        <option value="8">8h</option>
+    </select><br>
+    <label for="tunteja">Kuinka monta tuntia:</label><br>
+    <select name="tunteja" id="tuntia">
+        <option value="1">1h</option>
+        <option value="2">2h</option>
+        <option value="3">3h</option>
+        <option value="4">4h</option>
+        <option value="5">5h</option>
+        <option value="6">6h</option>
+        <option value="7">7h</option>
+        <option value="8">8h</option>
+    </select><br>
+    <!--
     <input id="alku" type="number" placeholder="Alkaen tunnista">
     <input id="pituus" type="number" placeholder="Kuinka monelta tunnilta?" onhange="">
     <br>
     <input id="tuntia" type="number" placeholder="Kuinka monta tuntia?" onhange="">
     <br>
+    -->
     <button onclick="fetchData()">Hae</button>
     <h3 id ="tunnit"></h3>
     <p id="info"></p>
