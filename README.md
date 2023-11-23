@@ -3,7 +3,7 @@ A simple web page that retrieves real-time electricity  stock market data. The i
 The application uses the same API interface as Shelly.
 
 ## NOTE!
-You need to install the CORS plugin in your browser to see the data.
+You need to install the CORS plugin in your browser to see the data.<br>
 (it's a server setting that I can't control.)
 
 ### Language
@@ -12,6 +12,6 @@ HTML, CSS and Javascript.
 
 ### Using:
 
-Go to https://rutjake.github.io/halvat/
+Go to https://rutjake.github.io/halvat/ <br>
 Install CORS plugin if you want to.
 
