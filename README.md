@@ -1,5 +1,5 @@
 # Halvat
-A simple web page that retrieves real-time electricity  stock market data. The idea of the page is that you can check what information the Shelly relay uses or has used. <br>
+A simple web page that retrieves real-time electricity  stock market data. The idea of the page is that you can check what information the Shelly relay uses. <br>
 The application uses the same API interface as Shelly.
 
 ## NOTE!
