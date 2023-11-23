@@ -10,7 +10,7 @@ You need to install the CORS plugin in your browser to see the data.<br>
 
 HTML, CSS and Javascript.
 
-### Using:
+### Usage:
 
 Go to https://rutjake.github.io/halvat/ <br>
 Install CORS plugin if you want to.
